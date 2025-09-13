@@ -7,10 +7,6 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
-    environment: github-pages
-    
-    env:
-      CUSTOM_DOMAIN: ${{ secrets.CUSTOM_DOMAIN }}
     
     steps:
     - name: Checkout code
@@ -25,17 +21,19 @@ jobs:
     - name: Install dependencies
       run: npm ci
       
-    - name: Build with custom output path
-      run: npm run build -- --prod --base-href=/ --output-path=dist/xmdigitals
+    - name: Build Angular project
+      run: npm run build -- --configuration=production --base-href=/
+      # atau: npx ng build --configuration=production --base-href=/
       
-    - name: Create CNAME file securely
+    - name: Verify build output
       run: |
-        if [ -n "$CUSTOM_DOMAIN" ]; then
-          echo "$CUSTOM_DOMAIN" > dist/xmdigitals/CNAME
-          echo "CNAME created with custom domain"
-        else
-          echo "No custom domain set, using github.io"
-        fi
+        echo "📁 Build output:"
+        ls -la dist/xmdigitals/
+        echo "📄 File index.html:"
+        ls -la dist/xmdigitals/index.html || echo "Index.html not found!"
+      
+    - name: Create CNAME file
+      run: echo "xmdigitals.com" > dist/xmdigitals/CNAME
       
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
