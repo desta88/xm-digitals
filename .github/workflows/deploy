@@ -30,6 +30,6 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        github_token: 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
+        github_token: ...
         publish_dir: ./dist/xmdigitals
         enable_jekyll: false
