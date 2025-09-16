@@ -1,21 +1,36 @@
 #!/bin/bash
 set -e
 
-# 1. Build Angular (custom domain → base-href "/")
-ng build --output-path=dist/xmdigitals/browser --base-href /
+PROJECT_NAME="xmdigitals"
+CUSTOM_DOMAIN="xmdigitals.com"
 
-# 2. Bersihkan folder docs
-rm -rf docs
+echo "📦 Building Angular app..."
+# hasil build simpan ke dist/<project>
+ng build --output-path=dist/$PROJECT_NAME --base-href /
 
-# 3. Copy hasil build ke docs/
-cp -r dist/xmdigitals/browser docs
+echo "🧹 Cleaning docs folder..."
+rm -rf docs/*
+rm -rf docs/.* 2>/dev/null || true
 
-# 4. Tambah file CNAME (kalau pakai custom domain)
-echo "xmdigitals.com" > docs/CNAME
+echo "📂 Copying build output to docs/"
+cp -r dist/$PROJECT_NAME/browser/* docs/
 
-# 5. Commit & push
-git add .
-git commit -m "deploy: update docs"
+if [ -n "$CUSTOM_DOMAIN" ]; then
+  echo "🌐 Adding CNAME for custom domain..."
+  echo "$CUSTOM_DOMAIN" > docs/CNAME
+fi
+
+echo "🔄 Adding Angular SPA fallback (404.html)..."
+if [ -f docs/index.html ]; then
+  cp docs/index.html docs/404.html
+else
+  echo "❌ ERROR: index.html tidak ditemukan di docs/. Cek hasil build Angular."
+  exit 1
+fi
+
+echo "🚀 Committing & pushing to master..."
+git add docs
+git commit -m "deploy: update GitHub Pages" || echo "✅ No changes to commit"
 git push origin master
 
-echo "✅ Deploy selesai! Cek GitHub Pages Anda."
+echo "✅ Deployment finished! Check your site at https://$CUSTOM_DOMAIN"
