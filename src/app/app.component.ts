@@ -5,6 +5,12 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 declare var $: any;
+declare function popupSideMenu(
+  sideMenu: string,
+  sideMenuOpen: string,
+  sideMenuCls: string,
+  toggleCls: string
+): void;
 
 @Component({
   selector: 'app-root',
@@ -20,6 +26,7 @@ export class AppComponent implements AfterViewInit {
 
    ngAfterViewInit(): void {
     this.initMobileMenu();
+    this.initPopupSideMenu();
     this.initShapeMockup();
     this.initStickyHeader();
 
@@ -37,6 +44,12 @@ export class AppComponent implements AfterViewInit {
   private initMobileMenu(): void {
     if ($('.mobile-menu-wrapper').length) {
       $('.mobile-menu-wrapper').mobilemenu();
+    }
+  }
+
+  private initPopupSideMenu(): void {
+    if ($('.sidemenu-wrapper')) {
+      popupSideMenu('.sidemenu-wrapper', '.sideMenuToggler', '.sideMenuCls', 'show');
     }
   }
 
