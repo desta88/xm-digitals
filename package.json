@@ -21,6 +21,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^5.0.0-beta1",
     "counterup2": "^2.0.2",
+    "gsap": "^3.13.0",
     "imagesloaded": "^5.0.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.7.1",

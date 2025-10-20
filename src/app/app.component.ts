@@ -25,31 +25,29 @@ export class AppComponent implements AfterViewInit {
   constructor(private router: Router) {}
 
    ngAfterViewInit(): void {
-    this.initMobileMenu();
-    this.initPopupSideMenu();
+    this.lazyLoadFontAwesome();
     this.initShapeMockup();
     this.initStickyHeader();
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         setTimeout(() => {
-          this.initMobileMenu();
           this.initShapeMockup();
           this.initStickyHeader();
-        }, 0);
+        }, 300);
       }
     });
   }
 
-  private initMobileMenu(): void {
-    if ($('.mobile-menu-wrapper').length) {
-      $('.mobile-menu-wrapper').mobilemenu();
-    }
-  }
-
-  private initPopupSideMenu(): void {
-    if ($('.sidemenu-wrapper')) {
-      popupSideMenu('.sidemenu-wrapper', '.sideMenuToggler', '.sideMenuCls', 'show');
+  private lazyLoadFontAwesome() {
+    const existing = document.getElementById('fa-stylesheet');
+    if (!existing) {
+      const link = document.createElement('link');
+      link.id = 'fa-stylesheet';
+      link.rel = 'stylesheet';
+      link.href = 'assets/fontawesome/css/all.min.css';
+      document.head.appendChild(link);
+      console.log('[FontAwesome] Loaded lazily by Angular');
     }
   }
 
