@@ -54,10 +54,11 @@
               "src/assets/js/custom.js"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
+            "outputMode": "static",
             "ssr": {
               "entry": "src/server.ts"
-            }
+            },
+            "prerender": true
           },
           "configurations": {
             "production": {
@@ -73,7 +74,9 @@
                   "maximumError": "300kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "prerender": true,
+              "ssr": true
             },
             "development": {
               "optimization": false,
