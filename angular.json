@@ -53,9 +53,10 @@
               "node_modules/sticky-kit/dist/sticky-kit.min.js",
               "src/assets/js/custom.js"
             ],
-            "prerender": {
-              "discoverRoutes": false,
-              "routesFile": "routes.txt"
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
             }
           },
           "configurations": {

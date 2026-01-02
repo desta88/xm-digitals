@@ -32,47 +32,6 @@ function wowAnimation() {
   }
 }
 
-// === Scroll To Top ===
-(function () {
-  var progressPath = document.querySelector('.scroll-top path');
-  if (progressPath) {
-    var pathLength = progressPath.getTotalLength();
-    progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
-    progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-    progressPath.style.strokeDashoffset = pathLength;
-    progressPath.getBoundingClientRect();
-    progressPath.style.transition =
-      progressPath.style.WebkitTransition =
-      'stroke-dashoffset 10ms linear';
-
-    var updateProgress = function () {
-      var scroll = $(window).scrollTop();
-      var height = $(document).height() - $(window).height();
-      var progress = pathLength - (scroll * pathLength) / height;
-      progressPath.style.strokeDashoffset = progress;
-    };
-    updateProgress();
-    $(window).scroll(updateProgress);
-
-    var scrollTopbtn = document.querySelector('.scroll-top');
-    if (scrollTopbtn) {
-      var offset = 50;
-      $(window).on('scroll', function () {
-        if ($(this).scrollTop() > offset) {
-          $(scrollTopbtn).addClass('show');
-        } else {
-          $(scrollTopbtn).removeClass('show');
-        }
-      });
-      $(scrollTopbtn).on('click', function (event) {
-        event.preventDefault();
-        $('html, body').animate({ scrollTop: 0 }, 300);
-        return false;
-      });
-    }
-  }
-})();
-
 // === Shape Mockup Plugin ===
 (function ($) {
   $.fn.shapeMockup = function () {
@@ -108,7 +67,6 @@ function wowAnimation() {
 
 // === Mobile Menu Plugin ===
 (function ($) {
-  $(window).scrollTop();
   $.fn.mobilemenu = function (options) {
     var opt = $.extend(
       {

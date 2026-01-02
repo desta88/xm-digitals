@@ -1,3 +1,21 @@
 {
-  "routes": {}
+  "routes": {
+    "/Program%20Files/Git": {},
+    "/Program%20Files/Git/about-us": {},
+    "/Program%20Files/Git/error-404": {},
+    "/Program%20Files/Git/insight": {},
+    "/Program%20Files/Git/services": {},
+    "/Program%20Files/Git/services/xm-ai": {},
+    "/Program%20Files/Git/services/xm-creative": {},
+    "/Program%20Files/Git/services/xm-growth": {},
+    "/Program%20Files/Git/services/xm-tech": {},
+    "/Program%20Files/Git/services/xm-tech/cms-development": {},
+    "/Program%20Files/Git/services/xm-tech/erp-crm": {},
+    "/Program%20Files/Git/services/xm-tech/mobile-hybrid-apps": {},
+    "/Program%20Files/Git/services/xm-tech/mobile-native-apps": {},
+    "/Program%20Files/Git/services/xm-tech/saas-platform": {},
+    "/Program%20Files/Git/services/xm-tech/web-development-jakarta": {},
+    "/Program%20Files/Git/use-cases": {},
+    "/Program%20Files/Git/use-cases/shift-left-testing-mission-critical-systems": {}
+  }
 }

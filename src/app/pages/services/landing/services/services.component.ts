@@ -40,11 +40,32 @@ export class ServicesComponent implements OnInit {
   }
 
   private seoUpdate(service: Service): void {
+    if (!service) return;
+
+    const pageTitle = service.metaTitle || 'XM Digitals Services';
+    const pageDesc = service.metaDescription || 'End-to-end digital solutions by XM Digitals.';
+    const pageImage = service.banner || 'xmdigitals.com';
+
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": pageTitle,
+      "serviceType": service.metaTitle || "Technology & Software Development",
+      "description": pageDesc,
+      "provider": {
+        "@type": "Organization",
+        "name": "XM Digitals",
+        "logo": "xmdigitals.com"
+      },
+      "areaServed": "ID"
+    };
+
     this.seo.update({
-      title: this.service?.metaTitle ?? 'XM Digitals Services',
-      description: this.service?.metaDescription,
-      image: this.service?.banner,
-      url: `https://xmdigitals.com/services/${this.service?.slug}`
+      title: pageTitle,
+      description: pageDesc,
+      image: pageImage,
+      schema: schemaData
     });
   }
+
 }

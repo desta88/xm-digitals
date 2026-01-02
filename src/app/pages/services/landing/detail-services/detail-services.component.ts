@@ -40,12 +40,37 @@ export class DetailServicesComponent implements OnInit {
   }
 
   private seoUpdate(detailService: DetailService): void {
+    if (!detailService) return;
+
+    const pageTitle = detailService.metaTitle || 'Service Detail';
+    const pageDesc = detailService.metaDescription || 'Default description for XM Digitals services.';
+    const pageImage = detailService.banner || 'assets/images/logo-xm.png';
+    const pageUrl = `https://xmdigitals.com/services/xm-tech/${detailService.slug}`
+
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": pageTitle,
+      "description": pageDesc,
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "XM Digitals",
+        "url": pageUrl,
+        "image": pageImage,
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jakarta",
+          "addressCountry": "ID"
+        }
+      }
+    };
+
     this.seo.update({
-      title: this.detailService?.metaTitle ?? 'XM Digitals Detail Service',
-      description: this.detailService?.metaDescription,
-      image: this.detailService?.banner,
-      url: `https://xmdigitals.com/services/${this.detailService?.slug}`,
-      type: 'article'
+      title: pageTitle,
+      description: pageDesc,
+      image: pageImage,
+      type: 'article',
+      schema: schemaData
     });
   }
 

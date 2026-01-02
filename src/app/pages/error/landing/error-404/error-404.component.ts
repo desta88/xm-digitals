@@ -11,15 +11,20 @@ import { SeoService } from '../../../../shared/services/seo.service';
   encapsulation: ViewEncapsulation.None
 })
 export class Error404Component implements OnInit {
-
   constructor(private seo: SeoService){}
 
   ngOnInit(): void {
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "404 | XM Digitals",
+      "description": "404 - Not Found."
+    }
+
     this.seo.update({
-      title: 'End-to-End Digital Solutions, Enhanced with AI',
-      description: 'XM Digitals helps businesses grow with end-to-end digital solutions — from creative, web & app development, digital growth, to optional AI-powered automation.',
-      image: '/assets/images/home-og.jpg',
-      url: 'https://xmdigitals.com'
+      title: '404 | XM Digitals',
+      description: '404 - Not Found',
+      schema: schemaData
     }); 
   }
 

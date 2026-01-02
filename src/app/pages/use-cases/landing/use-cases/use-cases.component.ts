@@ -40,12 +40,46 @@ export class UseCasesComponent implements OnInit {
   }
 
   private seoUpdate(insight: Insight): void {
+    if (!insight) return;
+
+    const pageTitle = insight.metaTitle || 'Use Cases';
+    const pageDesc = insight.metaDescription || 'Read our use cases.';
+    const pageImage = insight.banner || 'xmdigitals.com';
+    const datePublished = new Date().toISOString(); 
+
+    const schemaData = {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": pageTitle,
+      "description": pageDesc,
+      "image": pageImage,
+      "datePublished": datePublished,
+      "author": {
+        "@type": "Organization",
+        "name": "XM Digitals",
+        "url": "https://xmdigitals.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "XM Digitals",
+        "logo": { 
+          "@type": "ImageObject", 
+          "url": "https://xmdigitals.com/assets/images/logo-xm.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": `xmdigitals.com{insight.slug}`
+      }
+    };
+
     this.seo.update({
-      title: this.insight?.metaTitle ?? 'XM Digitals Insight',
-      description: this.insight?.metaDescription,
-      image: this.insight?.banner,
-      url: `https://xmdigitals.com/insight/${this.insight?.slug}`,
-      type: 'article'
+      title: pageTitle,
+      description: pageDesc,
+      image: pageImage,
+      type: 'article',
+      schema: schemaData
     });
   }
+
 }

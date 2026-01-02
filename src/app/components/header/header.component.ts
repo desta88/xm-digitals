@@ -1,11 +1,9 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
-import { RouterLink } from "@angular/router";
-import { Router, NavigationEnd } from '@angular/router';
+import { RouterLink, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-
-gsap.registerPlugin(TextPlugin);
 
 @Component({
   selector: 'app-header',
@@ -15,34 +13,38 @@ gsap.registerPlugin(TextPlugin);
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements AfterViewInit, OnInit {
-  @ViewChild('typingEl', { static: true }) typingEl!: ElementRef<HTMLSpanElement>;
+  @ViewChild('typingEl') typingEl!: ElementRef<HTMLSpanElement>;
 
-  private texts = ['Creative.', 'Tech.', 'AI.'];
-  private typingSpeed = 0.1; // seconds per character
-  private delayBetween = 1.2; // seconds pause between words
-  
-  isHome = false;
-  currentUrl = '';
+  private isBrowser: boolean;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) platformId: Object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
+  }
 
   ngOnInit(): void {
-    this.updateFromRouter();
-    
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(() => {
+    if (this.isBrowser) {
+      gsap.registerPlugin(TextPlugin);
+      
       this.updateFromRouter();
-    });
+      this.router.events.pipe(
+        filter(event => event instanceof NavigationEnd)
+      ).subscribe(() => {
+        this.updateFromRouter();
+      });
+    }
   }
 
   ngAfterViewInit(): void {
-    this.startTypingAnimation();
+    if (this.isBrowser) {
+      this.startTypingAnimation();
+    }
   }
 
   startTypingAnimation() {
-     const el = this.typingEl.nativeElement;
-
+    const el = this.typingEl.nativeElement;
     const tl = gsap.timeline({ repeat: -1, repeatDelay: 10 });
 
     tl.to(el, {
@@ -50,11 +52,13 @@ export class HeaderComponent implements AfterViewInit, OnInit {
       text: 'Creative.\nTech. AI.',
       ease: 'none'
     });
-    
   }
 
   updateFromRouter(): void {
     this.currentUrl = this.router.url;
     this.isHome = (this.currentUrl === '/' || this.currentUrl === '');
   }
+  
+  isHome = false;
+  currentUrl = '';
 }
