@@ -108,6 +108,7 @@ function wowAnimation() {
 
 // === Mobile Menu Plugin ===
 (function ($) {
+  $(window).scrollTop();
   $.fn.mobilemenu = function (options) {
     var opt = $.extend(
       {
@@ -179,6 +180,26 @@ function wowAnimation() {
 
       menu.on('click', function (e) {
         e.stopPropagation();
+        menuToggle();
+      });
+
+      // menu.find('div').on('click', function (e) {
+      //   console.log('lenth: ', $(this).find('.sub-menu.menu-open').length);
+      //   if($(this).find('.sub-menu.menu-open').length > 1) {
+      //     menuToggle();
+      //   }
+      //   e.stopPropagation();
+      // });
+
+      menu.find('.mobile-logo a').on('click', function (e) {
+        menuToggle();
+      });
+
+      menu.find('.mobile-menu ul > li.main-menu a').on('click', function (e) {
+        menuToggle();
+      });
+
+      menu.find('.sub-menu > li a').on('click', function (e) {
         menuToggle();
       });
 
