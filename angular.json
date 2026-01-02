@@ -52,7 +52,11 @@
               "node_modules/waypoints/lib/noframework.waypoints.js",
               "node_modules/sticky-kit/dist/sticky-kit.min.js",
               "src/assets/js/custom.js"
-            ]
+            ],
+            "prerender": {
+              "discoverRoutes": false,
+              "routesFile": "routes.txt"
+            }
           },
           "configurations": {
             "production": {
