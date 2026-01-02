@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block unnecessary system paths
+Disallow: /assets/
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://xmdigitals.com/sitemap.xml
