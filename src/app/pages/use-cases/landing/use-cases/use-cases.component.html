@@ -1,0 +1,35 @@
+<div class="landing-use-cases">
+  <div class="breadcumb-wrapper style2 bg-smoke">
+    <div class="container-fluid">
+      <div class="breadcumb-content">
+        <ul class="breadcumb-menu">
+          <li><a [routerLink]="'/'">Home</a></li>
+          <li>Use Cases</li>
+          <li>{{ insight?.title }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <app-hero [insight]="insight"></app-hero>
+  <div class="about-area-13 overflow-hidden space">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-lg-12">
+          <div class="title-area mb-0">
+            <div class="content" [innerHtml]="insight?.content"></div>
+            @if (insight?.ctaTitle) {
+              <div class="btn-group fade_left">
+                <a target="_blank" [href]="insight?.ctaUrl" class="btn style2 wow img-custom-anim-left">
+                  <span class="link-effect">
+                    <span class="effect-1">{{ insight?.ctaTitle }}</span>
+                    <span class="effect-1">{{ insight?.ctaTitle }}</span>
+                  </span>
+                </a>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

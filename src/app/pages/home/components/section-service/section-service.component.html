@@ -1,0 +1,21 @@
+@if (getService) {
+  <div class="feature-area-1 home space">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-8">
+          <div class="title-area text-center">
+            <h2 class="sec-title">What We Do</h2>
+            <p class="sec-text">Our digital services to help businesses build, grow, and scale.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row gy-4 align-items-center justify-content-center">
+        @for (service of getService.data; track $index) {
+          <div class="col-xl-6 col-md-6">
+            <app-card-service [service]="service"></app-card-service>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}

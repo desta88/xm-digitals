@@ -1,0 +1,29 @@
+@if (service) {
+  <div class="about-area-1 services space bg-theme">
+    <div class="about-img-1-1 shape-mockup img-custom-anim-left wow" data-left="0" data-top="-100px" data-bottom="140px" data-wow-duration="1.5s" data-wow-delay="0.1s">
+      <img [src]="service.banner" [alt]="service.title">
+    </div>
+    <div class="container">
+      <div class="row align-items-center justify-content-end">
+        <div class="col-lg-6">
+          <div class="overflow-hidden">
+            <div class="about-content-wrap ">
+              <div class="title-area mb-0">
+                <h1 class="sec-title">{{ service.title }}</h1>
+                <p class="sec-text mt-35">{{ service.description }}</p>
+                <div class="btn-wrap mt-20">
+                  <a target="_blank" [href]="service.ctaUrl" class="btn">
+                    <span class="link-effect">
+                      <span class="effect-1">{{ service.ctaTitle }}</span>
+                      <span class="effect-1">{{ service.ctaTitle }}</span>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

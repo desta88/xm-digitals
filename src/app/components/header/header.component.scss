@@ -9,6 +9,7 @@
 }
 .sticky-wrapper {
 	transition: 0.4s ease-in-out;
+	padding: 0 36px;
 }
 .sticky-wrapper.header-sticky {
 	position: fixed;
@@ -371,6 +372,10 @@
       font-size: 20px;
 			line-height: 24px;
       font-weight: 200;
+
+			&.style2 {
+				color: #fff;
+			}
 
 			@media (max-width: 767px) {
 				top: 0;

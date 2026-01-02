@@ -10,28 +10,29 @@
   <div class="mobile-menu-area">
     <button class="menu-toggle"><i class="fas fa-times"></i></button>
   <div class="mobile-logo">
-    <a href="#"><img src="assets/images/logo-xm.png" alt="Ovation"></a>
+    <a [routerLink]="'/'"><img src="assets/images/logo-xm.png" alt="XM Digitals | End-to-End Digital Solutions, Enhanced with AI"></a>
   </div>
   <div class="mobile-menu">
     <ul>
-      <li><a href="#">Home</a></li>
+      <li class="main-menu"><a [routerLink]="'/'">Home</a></li>
       <li class="menu-item-has-children">
-        <a href="#">What We Do</a>
+        <a [href]="'#'">Services</a>
         <ul class="sub-menu">
-          <li><a href="#">XM Creative</a></li>
-          <li><a href="#">XM TechOps</a></li>
-          <li><a href="#">XM Artificial Intelegance</a></li>
-          <li><a href="#">XM Growth</a></li>
+          <li><a [routerLink]="'/services/xm-creative'">XM Creative</a></li>
+          <li><a [routerLink]="'/services/xm-tech'">XM Tech</a></li>
+          <li><a [routerLink]="'/services/xm-ai'">XM AI</a></li>
+          <li><a [routerLink]="'/services/xm-growth'">XM Growth</a></li>
         </ul>
       </li>
-      <li><a href="#">Case Studies</a></li>
+      <li class="main-menu"><a [routerLink]="'/solutions'">Solutions</a></li>
+      <li class="main-menu"><a [routerLink]="'/insight'">Insight</a></li>
     </ul>
   </div>
   <div class="mobile-menu">
     <ul>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Contact Us</a></li>
-      <li><a href="#">Sitemap</a></li>
+      <li><a [routerLink]="'/about-us'">About Us</a></li>
+      <li><a [routerLink]="'/contact-us'">Contact Us</a></li>
+      <li><a [routerLink]="'/sitemap'">Sitemap</a></li>
     </ul>
   </div>
   <div class="sidebar-wrap">
@@ -58,3 +59,6 @@
   </div>
   </div>
 </div>
+<app-header />
+<router-outlet />
+<app-footer />

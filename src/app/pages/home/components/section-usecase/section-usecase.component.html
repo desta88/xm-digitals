@@ -1,0 +1,29 @@
+@if (getInsight) {
+  <div class="why-area-1 home space bg-theme">
+    <div class="why-img-1-1 shape-mockup wow img-custom-anim-right" data-wow-duration="1.5s" data-wow-delay="0.2s" data-right="0" data-top="-100px" data-bottom="140px">
+      <img [src]="getInsight.data[0].banner" [alt]="getInsight.data[0].title">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="title-area mb-45">
+            <h2 class="sec-title">
+              <img class="icon" src="assets/images/icon/location-pin-alt.svg" alt="XM Digitals - Usecase">
+              Use Case
+            </h2>
+          </div>
+          <h3>{{ getInsight.data[0].title }}</h3>
+          <p>{{ getInsight.data[0].description }}</p>
+          <h4>{{ getInsight.data[0].outcomeTitle }}</h4>
+          <p>{{ getInsight.data[0].outcomeDescription }}</p>
+          <a [routerLink]="`/use-cases/${getInsight.data[0].slug}`" class="btn mt-20">
+            <span class="link-effect">
+              <span class="effect-1">Read More</span>
+              <span class="effect-1">Read More</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+}

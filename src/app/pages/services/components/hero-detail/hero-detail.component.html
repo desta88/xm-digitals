@@ -1,0 +1,23 @@
+@if (detailService) {
+  <div class="hero-wrapper hero-7" id="hero">
+    <div class="bg-title">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="hero-style7 text-center">
+              <h1 class="hero-title wow img-custom-anim-top">{{ detailService.title }}</h1>
+              <p class="hero-text wow img-custom-anim-top">{{ detailService.description }}</p>
+            </div>
+          </div>
+          <div class="col-lg-8">
+            @if (detailService.banner) {
+              <div class="hero-7-thumb wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">
+                <img [src]="detailService.banner" [alt]="detailService.title">
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

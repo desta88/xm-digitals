@@ -1,0 +1,20 @@
+.feature-card {
+
+  &.whyus {
+    &.style2 {
+
+      h3 {
+      color: var(--smoke-color);
+      }
+
+      p {
+        min-height: 85px;
+
+        @media (max-width: 991px) {
+          min-height: auto;
+        }
+      }
+    }
+  }
+  
+}

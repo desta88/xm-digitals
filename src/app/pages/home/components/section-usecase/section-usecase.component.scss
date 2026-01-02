@@ -1,0 +1,30 @@
+.why-area-1 {
+
+  &.home {
+    .why-img-1-1 {
+      position: relative;
+
+      @media (max-width: 991px) {
+        width: 100%;
+        position: relative !important;
+      }
+    }
+
+    .title-area {
+      .sec-title {
+        position: relative;
+        padding-left: 50px;
+
+        .icon {
+          position: absolute;
+          left: 0;
+          top: 10px;
+
+          @media (max-width: 991px) {
+            top: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+.landing-services {
+  margin-top: 90px;
+
+  .about-area-1 {
+    .about-img-1-1 {
+      width: 44%;
+      img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width: 1500px) {
+    .about-area-1 .about-img-1-1 {
+      width: 42%;
+    }
+  }
+  @media (max-width: 991px) {
+    .about-area-1 {
+      margin-top: 0;
+    }
+    .about-area-1 .about-img-1-1 {
+      width: 100%;
+      top: -80px !important;
+      position: relative !important;
+    }
+  }
+
+  .about-area-13 {
+    padding-bottom: 20px;
+  }
+
+  .quote-services {
+    position: absolute;
+    top: 0;
+    left: -72px;
+  }
+
+  h2 {
+    font-size: 54px;
+    margin-bottom: 30px;
+
+    @media (max-width: 991px) {
+      font-size: 36px;
+    }
+  }
+
+  .sub-cluster {
+    margin: 80px 0;
+
+    @media (max-width: 991px) {
+      margin: 40px 0;
+    }
+
+    .pricing-card {
+      position: relative;
+      height: 315px;
+      overflow: hidden;
+
+      @media (max-width: 991px) {
+        height: 330px;
+      }
+
+      &.with-bg {
+        background: url('../../../../../assets/images/bg-service-web-development.jpg');
+        background-size: cover;
+        height: 420px;
+
+        @media (max-width: 991px) {
+          height: 350px;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.8),
+            rgba(0, 0, 0, 0) 
+          );
+        }
+
+        .pricing-card_title, p {
+          position: relative;
+          z-index: 1;
+          color: var(--smoke-color);
+        }
+      }
+
+      &.bg1 {
+        background: url('../../../../../assets/images/bg-service-web-development.jpg');
+        background-size: cover;
+      }
+
+      &.bg2 {
+        background: url('../../../../../assets/images/bg-service-web-applications.jpg');
+        background-size: cover;
+      }
+
+      &.bg3 {
+        background: url('../../../../../assets/images/bg-service-mobile-applications.jpg');
+        background-size: cover;
+      }
+
+      .checklist {
+        position: relative;
+        z-index: 1;
+
+        li > i, li a {
+          color: var(--smoke-color);
+        }
+
+        li a {
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}

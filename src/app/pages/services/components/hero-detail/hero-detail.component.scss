@@ -1,0 +1,24 @@
+.hero-wrapper {
+  .bg-title {
+    background-color: var(--white-color) !important;
+
+    h1 {
+      font-size: 54px;
+
+      @media (max-width: 991px) {
+        font-size: 36px;
+      }
+    }
+  }
+  .hero-style7 {
+    padding: 120px 0 70px;
+
+    @media (max-width: 991px) {
+      padding: 60px 0 70px;
+    }
+
+    .hero-text {
+      max-width: 760px;
+    }
+  }
+}

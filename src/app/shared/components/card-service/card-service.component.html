@@ -1,0 +1,17 @@
+<div class="feature-card service">
+  <div class="feature-card-icon">
+    <img [src]="service?.banner" [alt]="service?.title">
+  </div>
+  <h3 class="feature-card-title">
+    <a [routerLink]="`/services/${service?.slug}`">{{ service?.title }}</a>
+  </h3>
+  <p class="feature-card-text">{{ service?.description }}</p>
+  <p class="feature-card-text outcome">{{ service?.outcomeDescription }}</p>
+  <a [routerLink]="`/services/${service?.slug}`" class="link-btn">
+    <span class="link-effect">
+      <span class="effect-1">View Details</span>
+      <span class="effect-1">View Details</span>
+    </span>
+    <img src="assets/images/icon/arrow-left-top.svg" alt="XM Digitals - Services">
+  </a>
+</div>

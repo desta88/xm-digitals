@@ -1,0 +1,65 @@
+<div class="landing-services">
+  <app-hero [service]="service"></app-hero>
+  @if (service?.content) {
+    <div class="about-area-13 overflow-hidden space">
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-xl-8">
+            <div class="title-area mb-0">
+              <img class="quote-services" src="assets/images/icon/quote.svg" alt="">
+              <h2 class="sec-title">{{ service?.titleContent }}</h2>
+              <div class="content" [innerHTML]="service?.content"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (service?.serviceCluster) {
+    @for (serviceCluster of service?.serviceCluster; track $index) {
+      <div class="sub-cluster">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-8">
+              <div class="title-area text-center mb-0">
+                <h2 class="sec-title">{{ serviceCluster?.title }}</h2>
+              </div>
+            </div>
+          </div>
+          @if (serviceCluster?.serviceSubCluster) {
+            <div class="row gy-4 justify-content-center">
+              @for (serviceSubCluster of serviceCluster?.serviceSubCluster; track $index) {
+                @let serviceClusterLength = (serviceCluster?.serviceSubCluster?.length);
+                <div [class]="serviceCluster?.customCol ? serviceCluster?.customCol : 'col-lg-' + 12 / (serviceClusterLength ?? 0)">
+                  <div class="pricing-card" [class]="serviceSubCluster?.customBg ? 'with-bg ' + serviceSubCluster?.customBg : 'bg-smoke'">
+                    <h3 class="pricing-card_title">{{ serviceSubCluster?.title }}</h3>
+                    <p>{{ serviceSubCluster?.description }}</p>
+                    @if ((serviceSubCluster?.link?.length ?? 0) > 1) {
+                      <div class="checklist">
+                        <ul>
+                          @for (serviceSubClusterLink of serviceSubCluster?.link; track $index) {
+                            <li><i class="fas fa-link"></i> <a [routerLink]="serviceSubClusterLink?.ctaUrl">{{ serviceSubClusterLink?.ctaTitle }}</a></li>
+                          }
+                        </ul>
+                      </div>
+                    }
+                    @else if ((serviceSubCluster?.link?.length ?? 0) === 1) {
+                      <a target="_blank" [href]="serviceSubCluster?.link?.[0]?.ctaUrl" class="btn">
+                        <span class="link-effect">
+                          <span class="effect-1">{{ serviceSubCluster?.link?.[0]?.ctaTitle }}</span>
+                          <span class="effect-1">{{ serviceSubCluster?.link?.[0]?.ctaTitle }}</span>
+                        </span>
+                      </a>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  }
+
+</div>

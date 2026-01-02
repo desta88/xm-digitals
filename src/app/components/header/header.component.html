@@ -1,4 +1,4 @@
-<header class="nav-header header-layout1">
+<header class="nav-header" [class]="isHome ? 'header-layout2' : 'header-layout'">
   <div class="sticky-wrapper">
     <!-- Main Menu Area -->
     <div class="menu-area">
@@ -6,9 +6,9 @@
         <div class="row align-items-center justify-content-between">
           <div class="col-auto">
             <div class="header-logo">
-              <a href="#">
-                <img src="assets/images/logo-xm.png" alt="logo">
-                <h2 class="typing-text">
+              <a [routerLink]="'/'">
+                <img [src]="isHome ? 'assets/images/logo-xm-white.png' : 'assets/images/logo-xm.png'" alt="XM Digitals | End-to-End Digital Solutions, Enhanced with AI">
+                <h2 class="typing-text" [class]="isHome ? 'style2' : ''">
                   <span #typingEl></span>
                 </h2>
               </a>
@@ -18,7 +18,7 @@
             <nav class="main-menu d-none d-lg-inline-block">
               <ul>
                 <li class="active menu-item-has-children">
-                <a href="#">
+                <a [routerLink]="'/'" routerLinkActive="active">
                   <span class="link-effect">
                     <span class="effect-1">HOME</span>
                     <span class="effect-1">HOME</span>
@@ -26,24 +26,24 @@
                 </a>
               </li>
               <li class="menu-item-has-children">
-                <a href="#">
+                <a [href]="'#'">
                   <span class="link-effect">
-                    <span class="effect-1">WHAT WE DO</span>
-                    <span class="effect-1">WHAT WE DO</span>
+                    <span class="effect-1">SERVICES</span>
+                    <span class="effect-1">SERVICES</span>
                   </span>
                 </a>
                 <ul class="sub-menu">
-                  <li><a href="#">XM Creative</a></li>
-                  <li><a href="#">XM TechOps</a></li>
-                  <li><a href="#">XM Artificial Intelegance</a></li>
-                  <li><a href="#">XM Growth</a></li>
+                  <li><a [routerLink]="'/services/xm-creative'">XM Creative</a></li>
+                  <li><a [routerLink]="'/services/xm-tech'">XM Tech</a></li>
+                  <li><a [routerLink]="'/services/xm-ai'">XM AI</a></li>
+                  <li><a [routerLink]="'/services/xm-growth'">XM Growth</a></li>
                 </ul>
               </li>
               <li>
-                <a href="#">
+                <a [routerLink]="'/insight'">
                   <span class="link-effect">
-                    <span class="effect-1">CASE STUDIES</span>
-                    <span class="effect-1">CASE STUDIES</span>
+                    <span class="effect-1">INSIGHT</span>
+                    <span class="effect-1">INSIGHT</span>
                   </span>
                 </a>
               </li>

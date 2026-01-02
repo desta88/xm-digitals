@@ -1,0 +1,18 @@
+.feature-card {
+
+  &.service {
+    h3 {
+      font-size: 32px;
+
+      @media (max-width: 991px) {
+        font-size: 24px;
+      }
+    }
+    .outcome {
+      color: var(--light-color);
+      font-weight: 600;
+      font-size: 14px;
+      font-style: italic;
+    }
+  }
+}
