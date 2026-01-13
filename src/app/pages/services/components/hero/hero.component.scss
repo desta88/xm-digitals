@@ -4,6 +4,10 @@
 
     h1 {
       font-size: 56px;
+
+      @media (max-width: 991px) {
+        font-size: 36px;
+      }
     }
 
     .hero-description {

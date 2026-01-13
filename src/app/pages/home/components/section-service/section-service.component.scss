@@ -3,6 +3,10 @@
   &.home {
     h2 {
       font-size: 54px;
+
+        @media (max-width: 991px) {
+          font-size: 36px;
+        }
     }
   }
 }
