@@ -6,5 +6,8 @@ Disallow: /assets/
 Disallow: /api/
 Disallow: /*.json$
 
+# Tambahan untuk kontrol AI (Opsional)
+Content-signal: search=yes,ai-train=no
+
 # Sitemap location
 Sitemap: https://xmdigitals.com/sitemap.xml

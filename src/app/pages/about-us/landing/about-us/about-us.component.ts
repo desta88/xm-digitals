@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 import { SeoService } from '../../../../shared/services/seo.service';
 
 @Component({
   selector: 'app-about-us',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './about-us.component.html',
   styleUrl: './about-us.component.scss'
 })

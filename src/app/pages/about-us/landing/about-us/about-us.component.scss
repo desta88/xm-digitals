@@ -1,9 +1,24 @@
 .landing-about-us {
-  h2 {
-    font-size: 56px;
+
+  .images-area {
+    width: 100%;
+  }
+  .sec-title {
+    font-size: 48px;
 
     @media (max-width: 991px) {
       font-size: 36px;
+    }
+  }
+
+  .client-area-1 {
+    .client-list-wrap {
+      display: block;
+      text-align: center;
+
+      & > li {
+        display: inline-block;
+      }
     }
   }
 }
